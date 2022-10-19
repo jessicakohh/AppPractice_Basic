@@ -14,6 +14,7 @@
 		C821A9CB28FFDDC00093D85F /* ToDoList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C821A9C928FFDDC00093D85F /* ToDoList.xcdatamodeld */; };
 		C821A9CD28FFDDC20093D85F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C821A9CC28FFDDC20093D85F /* Assets.xcassets */; };
 		C821A9D028FFDDC20093D85F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C821A9CE28FFDDC20093D85F /* LaunchScreen.storyboard */; };
+		C8F6EBA628FFE63E00038CF3 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F6EBA528FFE63E00038CF3 /* Task.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		C821A9CC28FFDDC20093D85F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C821A9CF28FFDDC20093D85F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C821A9D128FFDDC20093D85F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C8F6EBA528FFE63E00038CF3 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				C821A9CE28FFDDC20093D85F /* LaunchScreen.storyboard */,
 				C821A9D128FFDDC20093D85F /* Info.plist */,
 				C821A9C928FFDDC00093D85F /* ToDoList.xcdatamodeld */,
+				C8F6EBA528FFE63E00038CF3 /* Task.swift */,
 			);
 			path = ToDoList;
 			sourceTree = "<group>";
@@ -143,6 +146,7 @@
 			files = (
 				C821A9C528FFDDC00093D85F /* ViewController.swift in Sources */,
 				C821A9C128FFDDC00093D85F /* AppDelegate.swift in Sources */,
+				C8F6EBA628FFE63E00038CF3 /* Task.swift in Sources */,
 				C821A9C328FFDDC00093D85F /* SceneDelegate.swift in Sources */,
 				C821A9CB28FFDDC00093D85F /* ToDoList.xcdatamodeld in Sources */,
 			);
