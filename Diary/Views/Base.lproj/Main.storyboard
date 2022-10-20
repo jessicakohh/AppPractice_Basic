@@ -58,6 +58,10 @@
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="180" height="200"/>
+                                        <connections>
+                                            <outlet property="dateLabel" destination="oGD-AG-uCj" id="XRs-SB-9Lt"/>
+                                            <outlet property="titleLabel" destination="Ogd-tv-itw" id="71d-HB-XqZ"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -78,6 +82,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="collectionView" destination="pxe-re-C2S" id="j5X-Jj-y4s"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -154,8 +161,18 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="일기 작성" id="KFQ-0C-0E2">
-                        <barButtonItem key="rightBarButtonItem" title="등록" id="LdQ-lf-UL0"/>
+                        <barButtonItem key="rightBarButtonItem" title="등록" id="LdQ-lf-UL0">
+                            <connections>
+                                <action selector="tapConfirmButton:" destination="cjM-hz-n1V" id="SV0-Tn-X1L"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="confirmButton" destination="LdQ-lf-UL0" id="QEG-hu-xII"/>
+                        <outlet property="contentsTextView" destination="Odx-jW-O0c" id="v5q-vk-xT3"/>
+                        <outlet property="dateTextField" destination="Yiw-NA-p2O" id="sYp-px-bmX"/>
+                        <outlet property="titleTextField" destination="EEA-nc-Pq1" id="LvA-hn-Cih"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="55u-OD-IQ2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -339,20 +356,6 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wUe-PG-g7j">
-                                <rect key="frame" x="89" y="512" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wOG-WN-Glx">
-                                <rect key="frame" x="138" y="558" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="5aG-pr-acY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -382,7 +385,7 @@
         <scene sceneID="APJ-x7-Tsj">
             <objects>
                 <navigationController id="cdB-y7-7rF" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="일기장" selectedImage="folder.fill" catalog="system" id="aza-x7-Erc"/>
+                    <tabBarItem key="tabBarItem" title="일기장" selectedImage="folder" catalog="system" id="aza-x7-Erc"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="x1H-HL-z4N">
                         <rect key="frame" x="0.0" y="47" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -397,7 +400,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="folder.fill" catalog="system" width="128" height="96"/>
+        <image name="folder" catalog="system" width="128" height="96"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
