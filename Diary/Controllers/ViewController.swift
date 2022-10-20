@@ -23,8 +23,13 @@ class ViewController: UIViewController {
         
         self.configureCollectionView()
         self.loadDiaryList()
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(editDiaryNotification(_:)),
+                                               name: NSNotification.Name("editDiary"),
+                                               object: nil
+        )
     }
-
+    
     // 다이어리 리스트 배열에 추가된 일기를 콜렉션뷰에 표시되도록 구현
     private func configureCollectionView() {
         self.collectionView.collectionViewLayout = UICollectionViewFlowLayout()
@@ -34,12 +39,38 @@ class ViewController: UIViewController {
         
     }
     
+    @objc func editDiaryNotification(_ notification: Notification) {
+        guard let diary = notification.object as? Diary else { return }
+        guard let row = notification.userInfo?["indexPath.row"] as? Int else { return }
+        self.diaryList[row] = diary
+        // 날짜 최신순으로 정렬
+        self.diaryList = self.diaryList.sorted(by: {
+            $0.date.compare($1.date) == .orderedDescending
+        })
+        self.collectionView.reloadData()
+    }
+    
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let writeDiaryViewController = segue.destination as? WriteDiaryViewController {
             writeDiaryViewController.delegate = self
         }
+    }
+    
+    private func saveDiaryList() {
+        
+        // 일기들을 userDefaluts에 딕셔너리 형태로 저장
+        let date = self.diaryList.map {
+            [
+                "title": $0.title,
+                "contents": $0.contents,
+                "date": $0.date,
+                "isStar": $0.isStar
+            ]
+        }
+        let userDefaults = UserDefaults.standard
+        userDefaults.set(date, forKey: "diaryList")
     }
     
     // userDefaults에 저장된 값을 불러오는 메소드
@@ -62,26 +93,12 @@ class ViewController: UIViewController {
         })
     }
     
-    private func saveDiaryList() {
-        
-        // 일기들을 userDefaluts에 딕셔너리 형태로 저장
-        let date = self.diaryList.map {
-            [
-                "title": $0.title,
-                "contents": $0.contents,
-                "date": $0.date,
-                "isStar": $0.isStar
-            ]
-        }
-        let userDefaults = UserDefaults.standard
-        userDefaults.set(date, forKey: "diaryList")
-    }
     
     
-    // dat 타입을 전달받으면 문자열로 만들어주는 메서드
+    // date 타입을 전달받으면 문자열로 만들어주는 메서드
     private func dateToString(date: Date) -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "yy년 m월 dd일(EEEEE)"
+        formatter.dateFormat = "yy년 MM월 dd일(EEEEE)"
         formatter.locale = Locale(identifier: "ko_KR")
         return formatter.string(from: date)
     }
@@ -113,7 +130,6 @@ extension ViewController: UICollectionViewDataSource {
     }
 }
 
-
 // 콜렉션뷰의 레이아웃
 extension ViewController: UICollectionViewDelegateFlowLayout {
     
@@ -138,3 +154,22 @@ extension ViewController: WriteDiaryViewDelegate {
     }
 }
 
+
+extension ViewController: UICollectionViewDelegate {
+    // 특정 셀이 선택되었음을 알리는 메소드
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let viewController = self.storyboard?.instantiateViewController(identifier: "DiaryDetailViewController") as? DiaryDetailViewController else { return }
+        let diary = self.diaryList[indexPath.row]
+        viewController.diary = diary
+        viewController.indexPath = indexPath
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+}
+
+
+extension ViewController: DiaryDetailViewDelegate {
+    func didSelectDelete(indexPath: IndexPath) {
+        self.diaryList.remove(at: indexPath.row)
+        self.collectionView.deleteItems(at: [indexPath])
+    }
+}
