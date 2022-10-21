@@ -263,6 +263,10 @@
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="390" height="80"/>
+                                        <connections>
+                                            <outlet property="dateLabel" destination="emh-Kl-y30" id="XD8-LL-YlK"/>
+                                            <outlet property="titleLabel" destination="pgD-5F-fJi" id="vt2-eF-4dF"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -277,6 +281,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ZAV-eE-AZW"/>
+                    <connections>
+                        <outlet property="collectionView" destination="46Z-4M-wd8" id="vgj-kV-auH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q3d-fn-gDt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -396,7 +403,7 @@
         <scene sceneID="APJ-x7-Tsj">
             <objects>
                 <navigationController id="cdB-y7-7rF" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="일기장" selectedImage="folder" catalog="system" id="aza-x7-Erc"/>
+                    <tabBarItem key="tabBarItem" title="일기장" selectedImage="folder.circle.fill" catalog="system" id="aza-x7-Erc"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="x1H-HL-z4N">
                         <rect key="frame" x="0.0" y="47" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -411,7 +418,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="folder" catalog="system" width="128" height="96"/>
+        <image name="folder.circle.fill" catalog="system" width="128" height="123"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
