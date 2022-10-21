@@ -8,11 +8,6 @@
 import UIKit
 import AudioToolbox
 
-enum TimerStatus {
-    case start
-    case pause
-    case end
-}
 
 class ViewController: UIViewController {
     
