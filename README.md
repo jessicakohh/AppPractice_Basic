@@ -18,7 +18,7 @@
 
 ### 3. Pomodoro  
    - DispatchSourceTimer  
-   - UIView Animation
+   - UIView Animation  
     * DatePicker를 통해 타이머 시간을 설정할 수 있습니다.  
     * 시작 버튼을 누르면 타이머가 시작되고, 일시 정지를 누르면 타이머가 일시정지 됩니다.  
     * 카운트다운이 완료되면 알람이 울립니다.   
